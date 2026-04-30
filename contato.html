@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Contato | Pet Love Care</title>
+
+  <meta name="description"
+    content="Entre em contato com a Pet Love Care. Atendimento rápido via WhatsApp para agendamentos e dúvidas." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <a href="index.html" class="brand">
+        <img src="img/logo.png" alt="Logo Pet Love Care" class="brand-logo">
+        <h1 class="brand-title">
+          <span class="brand-black">Pet Love</span> <span class="brand-orange">Care</span>
+        </h1>
+      </a>
+
+      <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav" aria-label="Menu principal">
+        <ul id="main-menu">
+          <li><a class="nav-link" href="index.html">Home</a></li>
+          <li><a class="nav-link" href="servicos.html">Serviços</a></li>
+          <li><a class="nav-link" href="agendar.html">Agendar</a></li>
+          <li><a class="nav-link" href="contato.html">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="contact-hero">
+    <div class="container">
+
+      <h2 data-reveal>
+        Vamos cuidar do seu <span>pet juntos?</span>
+      </h2>
+
+      <p data-reveal>
+        Fale com a gente pelo WhatsApp e resolva tudo de forma rápida e simples.
+      </p>
+
+      <a class="btn primary big" data-reveal
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://wa.me/5519987155840?text=Olá!%20Quero%20atendimento%20da%20Pet%20Love%20Care">
+        💬 Falar no WhatsApp
+      </a>
+
+      <p class="micro" data-reveal>Resposta rápida durante o dia</p>
+
+    </div>
+  </section>
+
+  <!-- CONTEÚDO -->
+  <section class="contact-section">
+    <div class="container">
+
+      <div class="contact-grid">
+
+        <!-- INFOS -->
+        <div class="contact-card" data-reveal>
+          <h3>📍 Localização</h3>
+          <p>Indaiatuba - SP (Mato Dentro)</p>
+        </div>
+
+        <div class="contact-card" data-reveal>
+          <h3>📧 E-mail</h3>
+          <p>petlovecare10@gmail.com</p>
+        </div>
+
+        <div class="contact-card" data-reveal>
+          <h3>📷 Instagram</h3>
+          <p>@petlovecare</p>
+        </div>
+
+        <div class="contact-card highlight" data-reveal>
+          <h3>📅 Agendamento</h3>
+          <p>Agende seu serviço com praticidade.</p>
+
+          <a class="btn primary" href="agendar.html">
+            Ir para agendamento
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MAPA -->
+  <section class="map-section">
+    <div class="container" data-reveal>
+
+      <h2>📍 Onde atendemos</h2>
+
+      <p class="section-desc">
+        Atendemos em Indaiatuba e região.
+      </p>
+
+      <iframe
+        class="map-frame"
+        src="https://www.google.com/maps?q=Indaiatuba,+SP&output=embed"
+        loading="lazy">
+      </iframe>
+
+    </div>
+  </section>
+
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>© 2026 Pet Love Care - Feito com ❤️ para os pets.</p>
+    </div>
+  </footer>
+
+  <!-- WHATSAPP FIXO -->
+  <a class="whatsapp-fixed"
+    target="_blank"
+    rel="noopener noreferrer"
+    href="https://wa.me/5519987155840"
+    aria-label="Falar no WhatsApp">
+    🐾
+  </a>
+
+  <!-- SCRIPTS -->
+  <script src="js/menu-active.js"></script>
+  <script defer src="js/menu-mobile.js"></script>
+  <script defer src="js/scroll-reveal.js"></script>
+
+</body>
+</html>

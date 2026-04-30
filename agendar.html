@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Agendamento | Pet Love Care</title>
+
+  <meta name="description"
+    content="Agende um serviço de pet sitter, passeio ou visita domiciliar com a Pet Love Care. Atendimento com carinho e segurança." />
+
+  <!-- Fonte moderna -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Poppins + Chewy -->
+  <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Poppins:wght@300;400;600;700&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Scripts do menu -->
+  <script defer src="js/menu-active.js"></script>
+  <script defer src="js/menu-mobile.js"></script>
+</head>
+
+<body>
+
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+
+  <header>
+    <div class="container">
+      <a href="index.html" class="brand">
+        <img src="img/logo.png" alt="Logo Pet Love Care" class="brand-logo">
+        <h1 class="brand-title">
+          <span class="brand-black">Pet Love</span> <span class="brand-orange">Care</span>
+        </h1>
+      </a>
+
+      <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="main-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="nav" aria-label="Menu principal">
+        <ul id="main-menu">
+          <li><a class="nav-link" href="index.html">Home</a></li>
+          <li><a class="nav-link" href="servicos.html">Serviços</a></li>
+          <li><a class="nav-link" href="agendar.html">Agendar</a></li>
+          <li><a class="nav-link" href="contato.html">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section>
+    <div class="container">
+
+      <div class="page-title" data-reveal>
+        <h2>Agende em <span style="color: #ff7a00;">poucos segundos</span> 🐾</h2>
+        <p class="section-desc">
+          Preencha o formulário abaixo para solicitar seu agendamento.
+        </p>
+      </div>
+
+      <!-- Formulário -->
+      <div class="form-wrapper" id="formulario" data-reveal>
+
+        <form id="formAgendamento" class="form-card">
+          <p class="form-subtitle">
+          </p>
+
+          <!-- =========================
+               1. INFORMAÇÕES DO TUTOR
+          ========================== -->
+          <h4 class="form-section-title">👤 Informações do Tutor</h4>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="nome">Nome Completo</label>
+              <input type="text" id="nome" placeholder="Ex: Maria Silva" required />
+            </div>
+
+            <div class="form-group">
+              <label for="telefone">WhatsApp</label>
+              <input type="text" id="telefone" placeholder="(00) 00000-0000" required maxlength="15" />
+            </div>
+
+            <div class="form-group">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" placeholder="exemplo@email.com" required />
+            </div>
+          </div>
+
+          <!-- =========================
+               2. SOBRE O PET
+          ========================== -->
+          <h4 class="form-section-title">🐶🐱 Sobre o Pet</h4>
+
+          <div class="form-grid">
+
+            <div class="form-group">
+              <label for="pet">Nome do Pet</label>
+              <input type="text" id="pet" placeholder="Ex: Thor" required />
+            </div>
+
+            <div class="form-group">
+              <label for="tipoPet">Tipo do Pet</label>
+              <select id="tipoPet" required>
+                <option value="">Selecione</option>
+                <option value="Cachorro">Cachorro</option>
+                <option value="Gato">Gato</option>
+                <option value="Outro">Outro</option>
+              </select>
+            </div>
+
+            <!-- Campos exclusivos para Cachorro -->
+            <div class="form-group" id="grupoRaca" style="display:none;">
+              <label for="raca">Raça</label>
+
+              <select id="raca">
+                <option value="">Carregando raças...</option>
+              </select>
+            </div>
+
+            <div class="form-group" id="grupoPorte" style="display:none;">
+              <label for="porte">Porte / Peso</label>
+              <select id="porte">
+                <option value="">Selecione</option>
+                <option value="Até 5kg">Até 5kg</option>
+                <option value="5-10kg">5-10kg</option>
+                <option value="10-20kg">10-20kg</option>
+                <option value="20-40kg">20-40kg</option>
+                <option value="+40kg">+40kg</option>
+              </select>
+            </div>
+
+            <div class="form-group" id="grupoVacinas" style="display:none;">
+              <label>Vacinas (Cachorro)</label>
+              <div class="checkbox-group">
+                <label><input type="checkbox" id="vacinaV8" /> V8/V10</label>
+                <label><input type="checkbox" id="vacinaRaiva" /> Antirrábica</label>
+              </div>
+            </div>
+
+            <!-- Castrado para Cachorro e Gato -->
+            <div class="form-group" id="grupoCastrado" style="display:none;">
+              <label>O pet é castrado?</label>
+              <div class="radio-group">
+                <label><input type="radio" name="castrado" value="Sim" /> Sim</label>
+                <label><input type="radio" name="castrado" value="Não" /> Não</label>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- =========================
+               3. DETALHES DO SERVIÇO
+          ========================== -->
+          <h4 class="form-section-title">🦴 Detalhes do Serviço</h4>
+
+          <div class="form-grid">
+
+            <div class="form-group">
+              <label for="servico">Qual serviço deseja?</label>
+              <select id="servico" required>
+                <option value="">Selecione</option>
+                <option value="Passeio">Passeio</option>
+                <option value="Visita em Casa">Visita em Casa</option>
+                <option value="Hospedagem">Hospedagem</option>
+              </select>
+            </div>
+
+            <!-- Data e Hora para Passeio/Visita -->
+            <div class="form-group" id="grupoData" style="display:none;">
+              <label for="data">Data</label>
+              <input type="date" id="data" />
+            </div>
+
+            <div class="form-group" id="grupoHora" style="display:none;">
+              <label for="hora">Horário</label>
+              <input type="time" id="hora" min="08:00" max="20:00" step="1800" />
+            </div>
+
+            <!-- Hospedagem -->
+            <div class="form-group" id="grupoHospedagem" style="display:none;">
+
+              <div class="hospedagem-grid">
+                <div class="hospedagem-item">
+                  <label for="checkin">Data de entrada (check-in)</label>
+                  <input type="date" id="checkin" />
+                </div>
+
+                <div class="hospedagem-item">
+                  <label for="checkout">Data de saída (check-out)</label>
+                  <input type="date" id="checkout" />
+                </div>
+              </div>
+
+            </div>
+
+            <div class="form-group" id="grupoPeriodoHospedagem" style="display:none;">
+              <label>Período de Entrada / Saída</label>
+              <div class="radio-group">
+                <label><input type="radio" name="periodoHospedagem" value="Manhã" /> Manhã</label>
+                <label><input type="radio" name="periodoHospedagem" value="Final da Tarde" /> Final da Tarde</label>
+              </div>
+            </div>
+
+            <!-- Limite de Pets Hospedagem -->
+            <div class="form-group" id="grupoQtdPetsHospedagem" style="display:none;">
+              <label for="qtdPetsHospedagem">Quantidade de Pets (máx. 3)</label>
+
+              <select id="qtdPetsHospedagem">
+                <option value="">Selecione</option>
+                <option value="1">1 Pet</option>
+                <option value="2">2 Pets</option>
+                <option value="3">3 Pets</option>
+              </select>
+
+              <small class="form-hint">
+                Hospedagem limitada a 3 pets por segurança e conforto.
+              </small>
+            </div>
+
+          </div>
+
+          <!-- =========================
+               4. FINALIZAÇÃO
+          ========================== -->
+          <h4 class="form-section-title">📝 Finalização</h4>
+
+          <div class="form-group obs-final">
+            <label for="obs">Observações</label>
+            <textarea id="obs"
+              placeholder="Conte-nos algo importante sobre o comportamento ou rotina do seu pet."></textarea>
+          </div>
+
+          <button type="submit" class="btn primary">
+            📲 Enviar Agendamento para o WhatsApp
+          </button>
+
+          <p id="mensagemStatus" class="status-msg"></p>
+        </form>
+
+      </div>
+
+      <!-- =========================
+           MODAL DE CONFIRMAÇÃO
+      ========================== -->
+      <div id="modalConfirmacao" class="modal-confirmacao">
+        <div class="modal-box">
+
+          <h3>📋 Confirme seus dados</h3>
+          <p>Verifique se está tudo correto antes de enviar:</p>
+
+          <div class="modal-info">
+            <p><strong>Nome:</strong> <span id="confNome"></span></p>
+            <p><strong>WhatsApp:</strong> <span id="confTelefone"></span></p>
+            <p><strong>E-mail:</strong> <span id="confEmail"></span></p>
+
+            <hr>
+
+            <p><strong>Pet:</strong> <span id="confPet"></span></p>
+            <p><strong>Tipo:</strong> <span id="confTipoPet"></span></p>
+            <p><strong>Raça:</strong> <span id="confRaca"></span></p>
+            <p><strong>Porte:</strong> <span id="confPorte"></span></p>
+            <p><strong>Castrado:</strong> <span id="confCastrado"></span></p>
+            <p><strong>Vacinas:</strong> <span id="confVacinas"></span></p>
+
+            <hr>
+
+            <p><strong>Serviço:</strong> <span id="confServico"></span></p>
+            <p><strong>Data:</strong> <span id="confData"></span></p>
+            <p><strong>Hora:</strong> <span id="confHora"></span></p>
+            <p><strong>Check-in:</strong> <span id="confCheckin"></span></p>
+            <p><strong>Check-out:</strong> <span id="confCheckout"></span></p>
+            <p><strong>Período:</strong> <span id="confPeriodoHospedagem"></span></p>
+            <p><strong>Qtd Pets:</strong> <span id="confQtdPetsHospedagem"></span></p>
+
+            <hr>
+
+            <p><strong>Observações:</strong> <span id="confObs"></span></p>
+          </div>
+
+          <div class="modal-botoes">
+            <button id="btnEditar" class="btn secondary">✏️ Editar</button>
+            <button id="btnConfirmarEnvio" class="btn primary">✅ Confirmar e Enviar</button>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+
+  <footer>
+
+    <!-- Botão WhatsApp fixo -->
+    <a class="whatsapp-fixed" target="_blank" rel="noopener noreferrer"
+      href="https://wa.me/5519987155840?text=Olá!%20Tenho%20interesse%20nos%20serviços%20da%20Pet%20Love%20Care.%20Pode%20me%20ajudar?"
+      aria-label="Falar no WhatsApp">
+      🐾
+    </a>
+
+    <div class="container">
+      <p>© 2026 Pet Love Care - Feito com &#x1F9E1; para os pets.</p>
+    </div>
+  </footer>
+
+  <!-- =========================
+       EMAILJS (DEVE VIR ANTES)
+  ========================== -->
+  <script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+  <script defer>
+    document.addEventListener("DOMContentLoaded", () => {
+      emailjs.init("qhnQ_6RoLHd4tiUQ9");
+    });
+  </script>
+
+  <!-- =========================
+       SCRIPTS DO SITE
+  ========================== -->
+  <script defer src="js/agendamento.js"></script>
+  <script defer src="js/form-options.js"></script>
+  <script defer src="js/racas-api.js"></script>
+  <script defer src="js/scroll-reveal.js"></script>
+
+</body>
+
+</html>

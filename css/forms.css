@@ -1,0 +1,495 @@
+/* =========================
+   FORMULÁRIOS
+========================= */
+form {
+  background: rgba(255, 255, 255, 0.92);
+  padding: 28px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+
+label {
+  display: block;
+  font-weight: 700;
+  margin-top: 16px;
+  margin-bottom: 8px;
+  color: var(--secondary);
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  font-family: inherit;
+  font-size: 1rem;
+  outline: none;
+  background: #fff;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(255, 122, 0,  0.18);
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+form button {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.status-msg {
+  margin-top: 15px;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+/* =========================
+   FORM WRAPPER (AGENDAR)
+========================= */
+.form-wrapper {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 25px;
+  align-items: start;
+}
+
+.form-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 6px;
+}
+
+.form-subtitle {
+  color: var(--muted);
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.info-card {
+  background: rgba(255, 255, 255, 0.92);
+  padding: 22px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+
+.info-card h3 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.info-card p {
+  margin-bottom: 14px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* =========================
+   GOOGLE CALENDAR
+========================= */
+.calendar-box {
+  background: rgba(255, 255, 255, 0.92);
+  padding: 28px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  margin-bottom: 30px;
+}
+
+.calendar-box h3 {
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+  font-weight: 900;
+}
+
+.calendar-box p {
+  color: var(--muted);
+  margin-bottom: 18px;
+  font-size: 0.95rem;
+}
+
+.calendar-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.calendar-frame {
+  width: 100%;
+  height: 650px;
+  border: 0;
+  border-radius: 16px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* =========================
+   SEÇÕES DO FORMULÁRIO
+========================= */
+.form-section-title {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: var(--secondary);
+  border-left: 5px solid var(--primary);
+  padding-left: 12px;
+}
+
+/* =========================
+   RADIO GROUP / CHECKBOX GROUP
+========================= */
+.radio-group,
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.radio-group label,
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  margin: 0;
+  padding: 10px 14px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.radio-group label:hover,
+.checkbox-group label:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.radio-group input,
+.checkbox-group input {
+  width: auto;
+}
+
+/* =========================
+   EFEITO BOTÃO SELECIONADO (RADIO/CHECKBOX)
+========================= */
+.radio-group input,
+.checkbox-group input {
+  accent-color: var(--primary);
+}
+
+.radio-group label:has(input:checked),
+.checkbox-group label:has(input:checked) {
+  border-color: var(--primary);
+  background: rgba(255, 122, 0, 0.12);
+  box-shadow: 0 6px 18px rgba(255, 122, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+/* =========================
+   AJUSTES FORMULÁRIO - MOBILE
+========================= */
+@media (max-width: 768px) {
+
+  .form-section-title {
+    font-size: 1.05rem;
+    margin-top: 24px;
+  }
+
+  .radio-group,
+  .checkbox-group {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .radio-group label,
+  .checkbox-group label {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 12px 14px;
+    font-size: 0.95rem;
+  }
+
+}
+
+/* =========================
+   RADIO/CHECKBOX EM 2 COLUNAS (DESKTOP)
+========================= */
+@media (min-width: 769px) {
+
+  .radio-group,
+  .checkbox-group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .radio-group label,
+  .checkbox-group label {
+    width: 100%;
+  }
+
+}
+
+/* =========================
+   RADIO/CHECKBOX EM 3 COLUNAS (TELAS GRANDES)
+========================= */
+@media (min-width: 1200px) {
+
+  .radio-group,
+  .checkbox-group {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+}
+
+/* =========================
+   SEÇÕES DO FORMULÁRIO
+========================= */
+.form-section-title {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: var(--secondary);
+  border-left: 5px solid var(--primary);
+  padding-left: 12px;
+}
+
+/* =========================
+   RADIO GROUP / CHECKBOX GROUP
+========================= */
+.radio-group,
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.radio-group label,
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  margin: 0;
+  padding: 10px 14px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.radio-group label:hover,
+.checkbox-group label:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.radio-group input,
+.checkbox-group input {
+  width: auto;
+  accent-color: var(--primary);
+}
+
+/* =========================
+   EFEITO SELECIONADO (JS)
+========================= */
+.option-selected {
+  border-color: var(--primary) !important;
+  background: rgba(255, 122, 0, 0.12) !important;
+  box-shadow: 0 6px 18px rgba(255, 122, 0, 0.15) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* =========================
+   RADIO/CHECKBOX EM 2 COLUNAS (DESKTOP)
+========================= */
+@media (min-width: 769px) {
+
+  .radio-group,
+  .checkbox-group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .radio-group label,
+  .checkbox-group label {
+    width: 100%;
+  }
+
+}
+
+/* =========================
+   RADIO/CHECKBOX EM 3 COLUNAS (TELAS GRANDES)
+========================= */
+@media (min-width: 1200px) {
+
+  .radio-group,
+  .checkbox-group {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+}
+
+/* =========================
+   CAMPOS QUE DEVEM OCUPAR A LINHA INTEIRA
+========================= */
+#grupoVacinas,
+#grupoCastrado,
+#grupoHospedagem,
+#grupoPeriodoHospedagem,
+#grupoQtdPetsHospedagem {
+  grid-column: 1 / -1;
+}
+
+/* =========================
+   HOSPEDAGEM EM 2 COLUNAS (DESKTOP)
+========================= */
+@media (min-width: 769px) {
+
+  #grupoHospedagem {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    align-items: end;
+  }
+
+  #grupoHospedagem label {
+    grid-column: span 1;
+    margin-bottom: 4px;
+  }
+
+  #grupoHospedagem input {
+    width: 100%;
+  }
+
+}
+
+/* =========================
+   PERÍODO HOSPEDAGEM ALINHADO
+========================= */
+#grupoPeriodoHospedagem .radio-group {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+@media (min-width: 769px) {
+  #grupoPeriodoHospedagem .radio-group {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* =========================
+   HOSPEDAGEM ALINHADA (CHECK-IN / CHECK-OUT)
+========================= */
+.hospedagem-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.hospedagem-item label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 700;
+  color: var(--secondary);
+}
+
+.hospedagem-item input {
+  width: 100%;
+}
+
+@media (min-width: 769px) {
+  .hospedagem-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ==========================
+   MODAL CONFIRMAÇÃO AGENDAMENTO
+========================== */
+
+.modal-confirmacao {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.65);
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.modal-confirmacao .modal-box {
+  background: #fff;
+  width: 100%;
+  max-width: 550px;
+  border-radius: 12px;
+  padding: 22px;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.modal-confirmacao h3 {
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.modal-confirmacao p {
+  margin: 6px 0;
+}
+
+.modal-confirmacao hr {
+  margin: 15px 0;
+  border: none;
+  border-top: 1px solid #ddd;
+}
+
+.modal-confirmacao .modal-info {
+  margin-top: 15px;
+}
+
+.modal-botoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.btn.secondary {
+  background: #ccc;
+  color: #000;
+  border: none;
+}
+
+.btn.secondary:hover {
+  background: #b5b5b5;
+}
