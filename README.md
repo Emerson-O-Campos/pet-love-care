@@ -29,12 +29,7 @@ Tem como objetivo principal permitir que usuários façam **agendamentos com uma
 ## 🚀 Como visualizar o projeto
 
 Você pode acessar a versão publicada do site aqui:  
-👉 https://emersonpsn07-afk.github.io/pet-love-care/
+👉 https://petlovecare10.netlify.app
 
 ---
 
-## 💻 Como executar localmente
-
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/Emerson-O-Campos/pet-love-care.git
