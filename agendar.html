@@ -20,6 +20,100 @@
 
   <link rel="stylesheet" href="css/style.css" />
 
+  <!-- Flatpickr (calendário com múltiplas datas) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/airbnb.css" />
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://npmcdn.com/flatpickr/dist/l10n/pt.js"></script>
+
+  <!-- Tema Pet Love Care para o calendário Flatpickr -->
+  <style>
+    /* Input do calendário */
+    #data {
+      cursor: pointer;
+      background-color: #fff;
+    }
+
+    /* Container do calendário */
+    .flatpickr-calendar {
+      border-radius: 14px !important;
+      box-shadow: 0 10px 30px rgba(255, 122, 0, 0.18) !important;
+      border: 1px solid #ffe4cc !important;
+      font-family: 'Poppins', sans-serif !important;
+    }
+
+    /* Cabeçalho (mês/ano e setas) */
+    .flatpickr-months,
+    .flatpickr-month,
+    .flatpickr-current-month,
+    .flatpickr-monthDropdown-months,
+    .flatpickr-current-month input.cur-year {
+      background: #ff7a00 !important;
+      color: #fff !important;
+      fill: #fff !important;
+    }
+    .flatpickr-months {
+      border-top-left-radius: 14px;
+      border-top-right-radius: 14px;
+    }
+    .flatpickr-prev-month,
+    .flatpickr-next-month {
+      color: #fff !important;
+      fill: #fff !important;
+    }
+    .flatpickr-prev-month svg,
+    .flatpickr-next-month svg {
+      fill: #fff !important;
+    }
+    .flatpickr-prev-month:hover,
+    .flatpickr-next-month:hover {
+      color: #fff3e6 !important;
+    }
+    .flatpickr-prev-month:hover svg,
+    .flatpickr-next-month:hover svg {
+      fill: #fff3e6 !important;
+    }
+
+    /* Dias da semana */
+    .flatpickr-weekdays {
+      background: #fff3e6 !important;
+    }
+    span.flatpickr-weekday {
+      color: #ff7a00 !important;
+      font-weight: 600 !important;
+      background: #fff3e6 !important;
+    }
+
+    /* Dias selecionados / hover / hoje */
+    .flatpickr-day:hover {
+      background: #ffe4cc !important;
+      border-color: #ffe4cc !important;
+    }
+    .flatpickr-day.today {
+      border-color: #ff7a00 !important;
+      color: #ff7a00 !important;
+    }
+    .flatpickr-day.today:hover {
+      background: #ff7a00 !important;
+      color: #fff !important;
+    }
+    .flatpickr-day.selected,
+    .flatpickr-day.selected:hover,
+    .flatpickr-day.selected.today {
+      background: #ff7a00 !important;
+      border-color: #ff7a00 !important;
+      color: #fff !important;
+      box-shadow: 0 2px 6px rgba(255, 122, 0, 0.35);
+    }
+
+    /* Dias desabilitados (passado) */
+    .flatpickr-day.flatpickr-disabled,
+    .flatpickr-day.flatpickr-disabled:hover {
+      color: #ccc !important;
+      background: transparent !important;
+    }
+  </style>
+
   <!-- Scripts do menu -->
   <script defer src="js/menu-active.js"></script>
   <script defer src="js/menu-mobile.js"></script>
@@ -178,10 +272,10 @@
               </select>
             </div>
 
-            <!-- Data e Hora para Passeio/Visita -->
+            <!-- Data(s) para Passeio/Visita - múltiplas datas permitidas -->
             <div class="form-group" id="grupoData" style="display:none;">
-              <label for="data">Data</label>
-              <input type="date" id="data" />
+              <label for="data">Data(s) <small style="font-weight:400;color:#666;">(clique para selecionar uma ou mais)</small></label>
+              <input type="text" id="data" placeholder="Selecione uma ou mais datas" readonly />
             </div>
 
             <div class="form-group" id="grupoHora" style="display:none;">
