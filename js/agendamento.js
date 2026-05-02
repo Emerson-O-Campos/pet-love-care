@@ -109,6 +109,15 @@ document.addEventListener("DOMContentLoaded", () => {
     return `${d}/${m}/${a}`;
   }
 
+  // Formata uma string de várias datas ("2026-05-10, 2026-05-11") para BR
+  function formatarDatasBR(datasStr) {
+    if (!datasStr) return "Não informado";
+    return datasStr
+      .split(",")
+      .map((d) => formatarDataBR(d.trim()))
+      .join(", ");
+  }
+
   function getRadioValue(name) {
     const selecionado = document.querySelector(`input[name="${name}"]:checked`);
     return selecionado ? selecionado.value : "";
@@ -137,7 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
         `*Quantidade de Pets:* ${dados.qtdPetsHospedagem}`;
     } else {
       blocoServico =
-        `*Data:* ${formatarDataBR(dados.data)}\n` +
+        `*Data(s):* ${formatarDatasBR(dados.data)}\n` +
         `*Horário:* ${dados.hora}`;
     }
 
@@ -195,7 +204,7 @@ Aguardo confirmação. Obrigado(a)! 😊
     document.getElementById("confServico").textContent = dados.servico;
 
     document.getElementById("confData").textContent =
-      dados.servico === "Hospedagem" ? "Não se aplica" : formatarDataBR(dados.data);
+      dados.servico === "Hospedagem" ? "Não se aplica" : formatarDatasBR(dados.data);
 
     document.getElementById("confHora").textContent =
       dados.servico === "Hospedagem" ? "Não se aplica" : (dados.hora || "Não informado");
@@ -254,7 +263,7 @@ Aguardo confirmação. Obrigado(a)! 😊
 
           data: dadosConfirmacao.servico === "Hospedagem"
             ? `Check-in: ${formatarDataBR(dadosConfirmacao.checkin)} | Check-out: ${formatarDataBR(dadosConfirmacao.checkout)}`
-            : formatarDataBR(dadosConfirmacao.data),
+            : formatarDatasBR(dadosConfirmacao.data),
 
           hora: dadosConfirmacao.servico === "Hospedagem"
             ? dadosConfirmacao.periodoHospedagem
@@ -283,6 +292,7 @@ Aguardo confirmação. Obrigado(a)! 😊
 
       // RESET
       form.reset();
+      if (flatpickrData) flatpickrData.clear();
       atualizarCamposServico();
       atualizarCamposPet();
 
@@ -300,9 +310,24 @@ Aguardo confirmação. Obrigado(a)! 😊
   const dia = String(hoje.getDate()).padStart(2, "0");
   const minDate = `${ano}-${mes}-${dia}`;
 
-  if (inputData) inputData.min = minDate;
   if (inputCheckin) inputCheckin.min = minDate;
   if (inputCheckout) inputCheckout.min = minDate;
+
+  // Flatpickr - calendário com múltiplas datas para Passeio/Visita
+  // Exibe em dd/mm/aaaa (BR) e salva internamente em aaaa-mm-dd
+  let flatpickrData = null;
+  if (inputData && typeof flatpickr !== "undefined") {
+    flatpickrData = flatpickr(inputData, {
+      mode: "multiple",
+      dateFormat: "Y-m-d",
+      altInput: true,
+      altFormat: "d/m/Y",
+      minDate: "today",
+      locale: typeof flatpickr.l10ns !== "undefined" && flatpickr.l10ns.pt ? flatpickr.l10ns.pt : "default",
+      conjunction: ", ",
+      allowInput: false
+    });
+  }
 
   // Máscara WhatsApp
   if (inputTelefone) {
@@ -481,11 +506,13 @@ Aguardo confirmação. Obrigado(a)! 😊
       }
     } else {
       if (!data) {
-        setStatus("⚠️ Selecione uma data.", "error");
+        setStatus("⚠️ Selecione ao menos uma data.", "error");
         return;
       }
 
-      if (!validarData(data)) {
+      const datasSelecionadas = data.split(",").map((d) => d.trim()).filter(Boolean);
+      const algumaInvalida = datasSelecionadas.some((d) => !validarData(d));
+      if (algumaInvalida) {
         setStatus("⚠️ Você não pode agendar para uma data passada.", "error");
         return;
       }
