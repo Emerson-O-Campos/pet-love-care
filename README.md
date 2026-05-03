@@ -29,7 +29,7 @@ Tem como objetivo principal permitir que usuários façam **agendamentos com uma
 ## 🚀 Como visualizar o projeto
 
 Você pode acessar a versão publicada do site aqui:  
-👉 https://petlovecare10.netlify.app
+👉 https://emerson-o-campos.github.io/pet-love-care/
 
 ---
 
