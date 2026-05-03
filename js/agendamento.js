@@ -123,34 +123,120 @@ document.addEventListener("DOMContentLoaded", () => {
     return selecionado ? selecionado.value : "";
   }
 
-  function gerarMensagemWhatsApp(dados) {
-    let infoPetExtra = "";
+function gerarMensagemWhatsApp(dados) {
+  let infoPetExtra = "";
 
-    if (dados.tipoPet === "Cachorro") {
-      infoPetExtra += `*Raça:* ${dados.raca || "Não informado"}\n`;
-      infoPetExtra += `*Porte/Peso:* ${dados.porte || "Não informado"}\n`;
-      infoPetExtra += `*Vacinas:* ${dados.vacinas || "Não informado"}\n`;
-    }
+  if (dados.tipoPet === "Cachorro") {
+    infoPetExtra += `*Raça:* ${dados.raca || "Não informado"}\n`;
+    infoPetExtra += `*Porte/Peso:* ${dados.porte || "Não informado"}\n`;
+    infoPetExtra += `*Vacinas:* ${dados.vacinas || "Não informado"}\n`;
+  }
 
-    if (dados.tipoPet === "Cachorro" || dados.tipoPet === "Gato") {
-      infoPetExtra += `*Castrado:* ${dados.castrado || "Não informado"}\n`;
-    }
+  if (dados.tipoPet === "Cachorro" || dados.tipoPet === "Gato") {
+    infoPetExtra += `*Castrado:* ${dados.castrado || "Não informado"}\n`;
+  }
 
-    let blocoServico = "";
+  // ==========================
+  // PREÇOS FIXOS
+  // ==========================
+  const PRECO_PASSEIO = 60;       // por hora
+  const PRECO_VISITA = 80;        // por dia
+  const PRECO_HOSPEDAGEM = 80;    // por dia
 
-    if (dados.servico === "Hospedagem") {
-      blocoServico =
-        `*Check-in:* ${formatarDataBR(dados.checkin)}\n` +
-        `*Check-out:* ${formatarDataBR(dados.checkout)}\n` +
-        `*Período Entrada/Saída:* ${dados.periodoHospedagem || "Não informado"}\n` +
-        `*Quantidade de Pets:* ${dados.qtdPetsHospedagem}`;
-    } else {
-      blocoServico =
-        `*Data(s):* ${formatarDatasBR(dados.data)}\n` +
-        `*Horário:* ${dados.hora}`;
-    }
+  // ==========================
+  // FUNÇÕES DE CÁLCULO
+  // ==========================
+  function calcularQtdDiasHospedagem(checkin, checkout) {
+    if (!checkin || !checkout) return 0;
 
-    return `
+    const dataCheckin = new Date(checkin);
+    const dataCheckout = new Date(checkout);
+
+    const diffMs = dataCheckout - dataCheckin;
+    const diffDias = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
+
+    // mínimo 1 dia
+    return diffDias <= 0 ? 1 : diffDias;
+  }
+
+  function contarDatasSelecionadas(datasStr) {
+    if (!datasStr) return 0;
+
+    return datasStr
+      .split(",")
+      .map((d) => d.trim())
+      .filter(Boolean).length;
+  }
+
+  function contarDatasSelecionadasFlatpickr() {
+    if (!flatpickrData) return 0;
+    return flatpickrData.selectedDates.length;
+  }
+
+  // ==========================
+  // CALCULAR VALOR TOTAL
+  // ==========================
+  let valorServico = "";
+  let valorTotal = 0;
+
+  if (dados.servico === "Passeio") {
+    const qtdDias = contarDatasSelecionadasFlatpickr();
+    const horasPorDia = 1; // padrão 1 hora por dia
+    valorTotal = qtdDias * horasPorDia * PRECO_PASSEIO;
+    valorServico = `R$ ${PRECO_PASSEIO.toFixed(2)} / hora`;
+  }
+
+  if (dados.servico === "Visita em Casa") {
+    const qtdDias = contarDatasSelecionadasFlatpickr();
+    valorTotal = qtdDias * PRECO_VISITA;
+    valorServico = `R$ ${PRECO_VISITA.toFixed(2)} / dia`;
+  }
+
+  if (dados.servico === "Hospedagem") {
+    const qtdDias = calcularQtdDiasHospedagem(dados.checkin, dados.checkout);
+    valorTotal = qtdDias * PRECO_HOSPEDAGEM;
+    valorServico = `R$ ${PRECO_HOSPEDAGEM.toFixed(2)} / dia`;
+  }
+
+  // ==========================
+  // BLOCO SERVIÇO
+  // ==========================
+  let blocoServico = "";
+
+  if (dados.servico === "Hospedagem") {
+    const qtdDias = calcularQtdDiasHospedagem(dados.checkin, dados.checkout);
+
+    blocoServico =
+      `*Check-in:* ${formatarDataBR(dados.checkin)}\n` +
+      `*Check-out:* ${formatarDataBR(dados.checkout)}\n` +
+      `*Período Entrada/Saída:* ${dados.periodoHospedagem || "Não informado"}\n` +
+      `*Quantidade de Pets:* ${dados.qtdPetsHospedagem}\n` +
+      `*Diárias:* ${qtdDias}\n` +
+      `*Valor Unitário:* ${valorServico}\n` +
+      `*Total Estimado:* R$ ${valorTotal.toFixed(2)}`;
+  } else {
+    const qtdDias = contarDatasSelecionadas(dados.data);
+
+    blocoServico =
+      `*Data(s):* ${formatarDatasBR(dados.data)}\n` +
+      `*Horário:* ${dados.hora}\n` +
+      `*Quantidade:* ${qtdDias} dia(s)\n` +
+      `*Valor Unitário:* ${valorServico}\n` +
+      `*Total Estimado:* R$ ${valorTotal.toFixed(2)}`;
+  }
+
+  // ==========================
+  // TABELA COMPLETA
+  // ==========================
+  const tabelaPrecos =
+    `━━━━━━━━━━━━━━━━━━\n` +
+    `💰 *TABELA DE VALORES*\n` +
+    `━━━━━━━━━━━━━━━━━━\n` +
+    `🐾 *Passeio:* R$ 60,00 / hora\n` +
+    `🏠 *Visita a domicílio:* R$ 80,00 / dia\n` +
+    `🏡 *Hospedagem:* R$ 80,00 / dia\n`;
+
+  return `
 Olá! Gostaria de agendar um serviço com a *Pet Love Care* 🐾
 
 ━━━━━━━━━━━━━━━━━━
@@ -178,9 +264,13 @@ ${blocoServico}
 ━━━━━━━━━━━━━━━━━━
 ${dados.obs || "Nenhuma"}
 
+${tabelaPrecos}
+
+⚠️ *Obs:* Valor estimado, pode variar conforme necessidades do pet.
+
 Aguardo confirmação. Obrigado(a)! 😊
-    `.trim();
-  }
+  `.trim();
+}
 
   // ==========================
   // MODAL - FUNÇÕES
