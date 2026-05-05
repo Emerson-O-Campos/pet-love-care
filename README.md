@@ -5,7 +5,7 @@
 ## 📸 Screenshots
 
 <p align="center">
-  <img src="img/home-petlovecare.png" width="450">
+  <img src="img/hero-petlovecare.png" width="450">
   <img src="img/servicos-petlovecare.png" width="450">
 </p>
 
