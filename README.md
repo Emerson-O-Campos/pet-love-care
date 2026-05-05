@@ -3,7 +3,7 @@
 ![Status](https://img.shields.io/badge/status-em%20desenvolvimento-orange?style=for-the-badge)
 
 <p align="center">
-  <img src="assets/hero petlovecare.png" alt="Preview da Home do Pet Love Care" width="800">
+  <img src="img/hero petlovecare.png" alt="Preview da Home do Pet Love Care" width="800">
   <br>
   <i>Prévia da página inicial do Pet Love Care</i>
 </p>
