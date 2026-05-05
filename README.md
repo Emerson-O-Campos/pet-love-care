@@ -2,16 +2,23 @@
 
 ![Status](https://img.shields.io/badge/status-em%20desenvolvimento-orange?style=for-the-badge)
 
+## 👀 Preview
+
+<p align="center">
+  <img src="img/hero-petlovecare.png" alt="Página inicial do Pet Love Care" width="900">
+</p>
+
+---
+
 ## 📸 Screenshots
 
 <p align="center">
-  <img src="img/hero-petlovecare.png" width="450">
-  <img src="img/servicos-petlovecare.png" width="450">
+  <img src="img/servicos-petlovecare.png" alt="Página de serviços" width="430">
+  <img src="img/agendar-petlovecare.png" alt="Página de agendamento" width="430">
 </p>
 
 <p align="center">
-  <img src="img/agendar-petlovecare.png" width="450">
-  <img src="img/contato-petlovecare.png" width="450">
+  <img src="img/contato-petlovecare.png" alt="Página de contato" width="430">
 </p>
 
 ## 📌 Sobre
