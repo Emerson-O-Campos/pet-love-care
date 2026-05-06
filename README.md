@@ -23,7 +23,7 @@
 
 ## 📌 Sobre
 
-O **Pet Love Care** é um site em desenvolvimento para o **Projeto Integrador** da faculdade UniVesp.  
+O **Pet Love Care** é um site em desenvolvimento para o **Projeto Integrador** da faculdade Univesp.  
 Tem como objetivo principal permitir que usuários façam **agendamentos com uma pet sitter** de maneira simples e prática.
 
 ---
