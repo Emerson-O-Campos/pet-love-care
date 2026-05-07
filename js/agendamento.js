@@ -8,7 +8,8 @@ const whatsappNumber = "5519987155840";
 
 // CONFIGURAÇÃO EMAILJS
 const EMAILJS_SERVICE_ID = "service_3owjlp4";
-const EMAILJS_TEMPLATE_ID = "template_ifcl6qo";
+const EMAILJS_TEMPLATE_CLIENTE = "template_lrhr6mu";
+const EMAILJS_TEMPLATE_ADMIN = "template_ifcl6qo";
 
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("formAgendamento");
@@ -168,10 +169,6 @@ function gerarMensagemWhatsApp(dados) {
       .filter(Boolean).length;
   }
 
-  function contarDatasSelecionadasFlatpickr() {
-    if (!flatpickrData) return 0;
-    return flatpickrData.selectedDates.length;
-  }
 
   // ==========================
   // CALCULAR VALOR TOTAL
@@ -180,15 +177,22 @@ function gerarMensagemWhatsApp(dados) {
   let valorTotal = 0;
 
   if (dados.servico === "Passeio") {
-    const qtdDias = contarDatasSelecionadasFlatpickr();
-    const horasPorDia = 1; // padrão 1 hora por dia
+
+    const qtdDias = contarDatasSelecionadas(dados.data);
+
+    const horasPorDia = 1;
+
     valorTotal = qtdDias * horasPorDia * PRECO_PASSEIO;
+
     valorServico = `R$ ${PRECO_PASSEIO.toFixed(2)} / hora`;
   }
 
   if (dados.servico === "Visita em Casa") {
-    const qtdDias = contarDatasSelecionadasFlatpickr();
+
+    const qtdDias = contarDatasSelecionadas(dados.data);
+
     valorTotal = qtdDias * PRECO_VISITA;
+
     valorServico = `R$ ${PRECO_VISITA.toFixed(2)} / dia`;
   }
 
@@ -345,49 +349,136 @@ Aguardo confirmação. Obrigado(a)! 😊
       // ==========================
       // ENVIO DE EMAIL AUTOMÁTICO
       // ==========================
+      // ==========================
+      // ENVIO DE EMAIL AUTOMÁTICO
+      // ==========================
       if (typeof emailjs !== "undefined") {
-        emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+
+        // Dados padrão dos templates
+        const templateParams = {
+
           nome: dadosConfirmacao.nome,
           email: dadosConfirmacao.email,
+          telefone: dadosConfirmacao.telefone,
+
+          pet: dadosConfirmacao.pet,
+          tipoPet: dadosConfirmacao.tipoPet,
+          raca: dadosConfirmacao.raca || "Não informado",
+          porte: dadosConfirmacao.porte || "Não informado",
+          castrado: dadosConfirmacao.castrado || "Não informado",
+          vacinas: dadosConfirmacao.vacinas || "Não informado",
+
           servico: dadosConfirmacao.servico,
 
           data: dadosConfirmacao.servico === "Hospedagem"
-            ? `Check-in: ${formatarDataBR(dadosConfirmacao.checkin)} | Check-out: ${formatarDataBR(dadosConfirmacao.checkout)}`
+            ? "Hospedagem"
             : formatarDatasBR(dadosConfirmacao.data),
 
           hora: dadosConfirmacao.servico === "Hospedagem"
-            ? dadosConfirmacao.periodoHospedagem
-            : dadosConfirmacao.hora
-        })
+            ? "Não se aplica"
+            : dadosConfirmacao.hora,
+
+          checkin: dadosConfirmacao.checkin
+            ? formatarDataBR(dadosConfirmacao.checkin)
+            : "Não informado",
+
+          checkout: dadosConfirmacao.checkout
+            ? formatarDataBR(dadosConfirmacao.checkout)
+            : "Não informado",
+
+          periodoHospedagem:
+            dadosConfirmacao.periodoHospedagem || "Não informado",
+
+          qtdPetsHospedagem:
+            dadosConfirmacao.qtdPetsHospedagem || "Não informado",
+
+          obs: dadosConfirmacao.obs || "Nenhuma observação",
+
+          reply_to: dadosConfirmacao.email
+        };
+
+        // ==========================
+        // EMAIL CLIENTE
+        // ==========================
+        emailjs.send(
+          EMAILJS_SERVICE_ID,
+          EMAILJS_TEMPLATE_CLIENTE,
+          templateParams
+        );
+
+        // ==========================
+        // EMAIL ADMIN
+        // ==========================
+        emailjs.send(
+          EMAILJS_SERVICE_ID,
+          EMAILJS_TEMPLATE_ADMIN,
+          templateParams
+        )
+
           .then(() => {
-            console.log("E-mail enviado com sucesso!");
+            console.log("E-mails enviados com sucesso!");
+
+            abrirWhatsApp();
           })
+
           .catch((error) => {
-            console.log("Erro ao enviar e-mail:", error);
+            console.log("Erro ao enviar e-mails:", error);
+
+            abrirWhatsApp();
           });
+
+      } else {
+        abrirWhatsApp();
       }
 
       // ==========================
       // ENVIO PARA WHATSAPP
       // ==========================
       submitBtn.disabled = true;
-      submitBtn.textContent = "Abrindo WhatsApp...";
-      setStatus("✅ Redirecionando para o WhatsApp...", "success");
+      submitBtn.textContent = "Enviando agendamento...";
 
-      const mensagem = gerarMensagemWhatsApp(dadosConfirmacao);
-      const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(mensagem)}`;
-      window.location.href = url;
+      // Mensagem de sucesso principal
+      statusMsg.innerHTML = `
+        <strong>✅ Agendamento recebido com sucesso!</strong><br><br>
+        Se o WhatsApp não abrir, não se preocupe.<br>
+        Entraremos em contato por telefone ou e-mail.
+      `;
 
+      statusMsg.style.color = "#1b7f3b";
+
+      function abrirWhatsApp() {
+
+        // Gera mensagem
+        const mensagem = gerarMensagemWhatsApp(dadosConfirmacao);
+
+        // Detecta dispositivo
+        const isMobile = /iPhone|Android/i.test(navigator.userAgent);
+
+        // URL WhatsApp
+        const url = isMobile
+          ? `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(mensagem)}`
+          : `https://web.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(mensagem)}`;
+
+        // Abre WhatsApp
+        window.open(url, "_blank");
+      }
+
+      // Fecha modal
       fecharModalConfirmacao();
 
-      // RESET
+      // RESET FORM
       form.reset();
-      if (flatpickrData) flatpickrData.clear();
+
+      if (flatpickrData) {
+        flatpickrData.clear();
+      }
+
       atualizarCamposServico();
       atualizarCamposPet();
 
+      // Restaura botão
       submitBtn.disabled = false;
-      submitBtn.textContent = "📲 Enviar Agendamento para o WhatsApp";
+      submitBtn.textContent = "📩 Solicitar Agendamento";
     });
   }
 
