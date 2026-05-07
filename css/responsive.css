@@ -1,240 +1,197 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+/* =========================
+   RESPONSIVO
+========================= */
+@media (max-width: 900px) {
+  .hero .container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
 
-  <title>Pet Love Care | Pet Sitter e Cuidados Domiciliares</title>
+  .hero p {
+    max-width: 100%;
+  }
 
-  <meta name="description"
-    content="Pet sitter com visitas domiciliares, passeios e cuidados personalizados. Atendimento com carinho e segurança para seu pet." />
+  .buttons {
+    justify-content: center;
+  }
 
-  <!-- Fonte moderna -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  .about {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
 
-  <!-- Poppins + Chewy -->
-  <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-  <link rel="stylesheet" href="css/style.css" />
-</head>
+  .form-wrapper {
+    grid-template-columns: 1fr;
+  }
 
-<script src="js/menu-active.js"></script>
-<script defer src="js/menu-mobile.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
 
-<body>
+  header .container {
+    flex-direction: row;
+    gap: 14px;
+  }
 
-  <div vw class="enabled">
-     <div vw-access-button class="active"></div>
-     <div vw-plugin-wrapper>
-       <div class="vw-plugin-top-wrapper"></div>
-     </div>
-  </div>
+  .menu-toggle {
+    display: flex;
+  }
 
-  <header>
-    <div class="container">
-      <a href="index.html" class="brand">
-        <img src="img/logo.png" alt="Logo Pet Love Care" class="brand-logo">
-        <h1 class="brand-title">
-          <span class="brand-black">Pet Love</span> <span class="brand-orange">Care</span>
-        </h1>
-      </a>
+  nav {
+    position: fixed;
+    top: 76px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    width: calc(100% - 40px);
+    max-width: 520px;
 
-      <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="main-menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.12);
+    padding: 18px;
 
-      <nav class="nav" aria-label="Menu principal">
-        <ul id="main-menu">
-          <li><a class="nav-link" href="index.html">Home</a></li>
-          <li><a class="nav-link" href="servicos.html">Serviços</a></li>
-          <li><a class="nav-link" href="agendar.html">Agendar</a></li>
-          <li><a class="nav-link" href="contato.html">Contato</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.25s ease;
+    z-index: 999;
+  }
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="container">
+  header.menu-open nav {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+  }
 
-      <!-- TEXTO -->
-      <div class="hero-text" data-reveal>
-        <h2>
-          Cuidado completo para o seu
-          <span style="color: #ff7a00;">melhor amigo</span> 🐾
-        </h2>
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
 
-        <p>
-          Serviços de pet sitter, passeios e visitas domiciliares para garantir
-          segurança, carinho e tranquilidade para você e seu animalzinho.
-        </p>
+  nav a {
+    display: block;
+    padding: 12px 14px;
+    border-radius: 14px;
+    background: rgba(255, 122, 0, 0.06);
+  }
 
-        <div class="buttons">
-          <a href="agendar.html" class="btn primary">📅 Agendar Agora</a>
-          <a href="servicos.html" class="btn outline">Ver Serviços</a>
-        </div>
-      </div>
+  nav a::after {
+    display: none;
+  }
+}
 
-      <!-- IMAGEM -->
-      <div class="hero-image" data-reveal>
-        <img src="img/home.jpg" alt="Pessoa com seus pets em casa" />
-      </div>
+@media (max-width: 600px) {
+  section {
+    padding: 55px 0;
+  }
 
-    </div>
-  </section>
+  .hero h2 {
+    font-size: 2rem;
+  }
 
-  <!-- BENEFÍCIOS -->
-  <section>
-    <div class="container">
-      <h2 data-reveal>Por que escolher o Pet Love <span style="color:#ff7a00;">Care?</span></h2>
+  .cards {
+    grid-template-columns: 1fr;
+  }
 
-      <p class="section-desc" data-reveal>
-        Atendimento com responsabilidade, amor e cuidado para que seu pet se sinta seguro e feliz.
-      </p>
+  header h1 {
+    font-size: 1.7rem;
+  }
 
-      <div class="cards">
-        <div class="card" data-reveal>
-          <h3>🐶 Atendimento Personalizado</h3>
-          <p>O cuidado é adaptado à rotina, idade e necessidades do seu pet.</p>
-        </div>
+  .calendar-frame {
+    height: 550px;
+  }
 
-        <div class="card" data-reveal>
-          <h3>🏡 Visitas em Domicílio</h3>
-          <p>Seu pet permanece no conforto do lar, evitando estresse e ansiedade.</p>
-        </div>
+  .map-frame {
+    height: 320px;
+  }
+}
 
-        <div class="card" data-reveal>
-          <h3>🚶 Passeios com Segurança</h3>
-          <p>Passeios supervisionados, garantindo bem-estar e saúde para o pet.</p>
-        </div>
+@media (max-width: 768px) {
+  .hero .container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
 
-        <div class="card" data-reveal>
-          <h3>📸 Atualizações e Fotos</h3>
-          <p>Envio de fotos e mensagens durante o atendimento para você acompanhar tudo.</p>
-        </div>
+  .hero-image {
+    justify-content: center;
+    margin-top: 25px;
+  }
+}
 
-        <div class="card" data-reveal>
-          <h3>💙 Amor e Carinho</h3>
-          <p>Mais do que um serviço: cuidado de verdade com respeito e atenção.</p>
-        </div>
+@media (max-width: 768px) {
+  .hero .container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
 
-        <div class="card" data-reveal>
-          <h3>🕒 Flexibilidade</h3>
-          <p>Horários combinados conforme a necessidade do tutor e do pet.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+  .hero-image {
+    justify-content: center;
+  }
+}
 
-  <!-- SOBRE -->
-  <section>
-    <div class="container about" data-reveal>
+/* =========================
+   AJUSTES FORMULÁRIO - MOBILE
+========================= */
+@media (max-width: 768px) {
 
-  <div class="about-image">
-    <img src="img/sobre-nos-no-index.jpg" alt="Sobre nós" class="about-img">
-  </div>
+  .form-section-title {
+    font-size: 1.05rem;
+    margin-top: 24px;
+  }
 
-  <div class="about-text">
-    <h2>Sobre a Pet Love <span style="color:#ff7a00;">Care</span></h2>
+  .radio-group,
+  .checkbox-group {
+    flex-direction: column;
+    gap: 10px;
+  }
 
-    <p class="section-desc">
-      A Pet Love Care oferece serviços de pet sitter para quem deseja viajar ou passar o dia fora,
-      garantindo que seu pet receba atenção, carinho e cuidados essenciais.
-    </p>
+  .radio-group label,
+  .checkbox-group label {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 12px 14px;
+    font-size: 0.95rem;
+  }
 
-    <p class="section-desc">
-      Nosso compromisso é manter o bem-estar do seu animalzinho com segurança,
-      responsabilidade e muito amor.
-    </p>
+}
 
-    <a href="contato.html" class="btn outline">📩 Fale Conosco</a>
-  </div>
+/* =========================
+   AJUSTES FORMULÁRIO - MOBILE
+========================= */
+@media (max-width: 768px) {
 
-</div>
+  .form-section-title {
+    font-size: 1.05rem;
+    margin-top: 24px;
+  }
 
-  <!-- ATENDIMENTO -->
-  <section>
-    <div class="container">
-      <h2 data-reveal>Atendimento</h2>
+  .radio-group,
+  .checkbox-group {
+    flex-direction: column;
+    gap: 10px;
+  }
 
-      <p class="section-desc" data-reveal>
-        Veja abaixo nossa região e horários de funcionamento.
-      </p>
+  .radio-group label,
+  .checkbox-group label {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 12px 14px;
+    font-size: 0.95rem;
+  }
 
-      <div class="cards">
-        <div class="card" data-reveal>
-          <h3>📍 Região</h3>
-          <p>(Indaiatuba-SP/Mato Dentro)</p>
-        </div>
+}
 
-        <div class="card" data-reveal>
-          <h3>🗓 Dias</h3>
-          <p>Segunda a Domingo</p>
-        </div>
+@media (max-width: 768px) {
+  .contact-premium {
+    grid-template-columns: 1fr;
+  }
 
-        <div class="card" data-reveal>
-          <h3>⏰ Horário</h3>
-          <p>08:00 às 20:00</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA FINAL -->
-  <section>
-    <div class="container call-to-action" data-reveal>
-      <h2>Pronto para agendar?</h2>
-
-      <p class="section-desc">
-        Clique no botão abaixo e faça seu agendamento em poucos segundos.
-      </p>
-
-      <a class="btn primary" href="agendar.html">📅 Fazer Agendamento</a>
-      <a class="btn outline" target="_blank" rel="noopener noreferrer"
-        href="https://wa.me/5519987155840?text=Olá!%20Tenho%20interesse%20nos%20serviços%20da%20Pet%20Love%20Care.%20Pode%20me%20ajudar?">
-        💬 WhatsApp
-      </a>
-    </div>
-  </section>
-
-  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-  <script>
-    new window.VLibras.Widget('https://vlibras.gov.br/app');
-  </script>
-
-  <footer>
-    <div class="container">
-      <p>© 2026 Pet Love Care - Feito com &#x1F9E1; para os pets.</p>
-    </div>
-  </footer>
-
-  <!-- Botão WhatsApp fixo -->
-  <a class="whatsapp-fixed" target="_blank" rel="noopener noreferrer"
-    href="https://wa.me/5519987155840?text=Olá!%20Tenho%20interesse%20nos%20serviços%20da%20Pet%20Love%20Care.%20Pode%20me%20ajudar?"
-    aria-label="Falar no WhatsApp">
-    <i class="fa-brands fa-whatsapp"></i>
-  </a>
-
-  <script>
-    window.addEventListener("scroll", () => {
-      const header = document.querySelector("header");
-      if (window.scrollY > 30) {
-        header.style.background = "rgba(255, 255, 255, 0.92)";
-        header.style.boxShadow = "0 4px 18px rgba(0,0,0,0.08)";
-      } else {
-        header.style.background = "rgba(255, 255, 255, 0.75)";
-        header.style.boxShadow = "none";
-      }
-    });
-  </script>
-
-  <!-- SCROLL REVEAL -->
-  <script defer src="js/scroll-reveal.js"></script>
-
-</body>
-</html>
+  .contact-hero h2 {
+    font-size: 2rem;
+  }
+}
