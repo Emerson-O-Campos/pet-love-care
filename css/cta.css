@@ -1,0 +1,132 @@
+/* =========================
+   CALL TO ACTION RENOVADA - CENTRALIZADA
+========================= */
+.call-to-action {
+  background: linear-gradient(135deg, var(--primary, #ff7a00) 0%, #ff9a3a 100%);
+  border-radius: 48px;
+  padding: 4rem 3rem;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(255, 122, 0, 0.25);
+  position: relative;
+  overflow: hidden;
+  margin: 2rem auto;
+  max-width: 1120px;
+  width: calc(100% - 40px);
+}
+
+/* Centralização do conteúdo interno */
+.call-to-action .container {
+  display: block !important;
+  text-align: center !important;
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+}
+
+.call-to-action::before {
+  content: '🐕 🐈 🐩';
+  position: absolute;
+  font-size: 8rem;
+  opacity: 0.08;
+  bottom: -20px;
+  right: -20px;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.call-to-action::after {
+  content: '❤️ 🐾';
+  position: absolute;
+  font-size: 6rem;
+  opacity: 0.08;
+  top: -20px;
+  left: -20px;
+  pointer-events: none;
+}
+
+/* Títulos centralizados */
+.call-to-action h2 {
+  color: var(--white, #ffffff);
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center !important;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+/* Descrição centralizada */
+.call-to-action .section-desc {
+  color: rgba(255, 255, 255, 0.95);
+  margin: 0 auto 2rem auto !important;
+  text-align: center !important;
+  max-width: 600px;
+}
+
+/* Botões centralizados */
+.call-to-action .btn {
+  margin: 0.5rem;
+  display: inline-block;
+}
+
+.call-to-action .btn.primary {
+  background: var(--white, #ffffff);
+  color: var(--primary, #ff7a00);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.call-to-action .btn.primary:hover {
+  background: var(--white, #ffffff);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.call-to-action .btn.outline {
+  background: transparent;
+  border-color: var(--white, #ffffff);
+  color: var(--white, #ffffff);
+}
+
+.call-to-action .btn.outline:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-3px);
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .call-to-action {
+    padding: 2.5rem 1.5rem;
+    border-radius: 32px;
+    width: calc(100% - 30px);
+    margin: 1.5rem auto;
+  }
+  
+  .call-to-action h2 {
+    font-size: 1.5rem !important;
+  }
+  
+  .call-to-action .btn {
+    width: auto;
+    min-width: 200px;
+    margin: 0.5rem;
+    display: inline-block;
+  }
+  
+  .call-to-action::before,
+  .call-to-action::after {
+    font-size: 4rem;
+    opacity: 0.05;
+  }
+}
+
+@media (max-width: 480px) {
+  .call-to-action {
+    padding: 2rem 1rem;
+  }
+  
+  .call-to-action .btn {
+    width: 100%;
+    max-width: 280px;
+    margin: 0.5rem auto;
+    display: block;
+  }
+}

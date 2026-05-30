@@ -1,0 +1,215 @@
+/* =========================
+   BOTÕES
+========================= */
+.buttons {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 18px;
+  border-radius: 16px;
+  font-weight: 700;
+  transition: 0.2s;
+  cursor: pointer;
+  border: none;
+}
+
+.btn.primary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: var(--white);
+  box-shadow: 0 10px 22px rgba(255, 122, 0, 0.28);
+}
+
+.btn.primary:hover {
+  transform: translateY(-2px);
+  opacity: 0.95;
+}
+
+.btn.outline {
+  border: 2px solid var(--primary);
+  background: transparent;
+  color: var(--primary-dark);
+}
+
+.btn.outline:hover {
+  background: rgba(255, 122, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+/* =========================
+   IMAGENS PADRÃO
+========================= */
+.hero-img,
+.about-img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  margin-top: 15px;
+}
+
+.service-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin: 12px 0;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* =========================
+   CARDS MELHORADOS
+========================= */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 28px;
+  padding: 2rem 1.8rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(255, 122, 0, 0.1);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary, #ff7a00), var(--primary-light, #ff9a3a));
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+  transform-origin: left;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover::before {
+  transform: scaleX(1);
+}
+
+.card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+  font-weight: 700;
+  color: var(--dark, #2d3e50);
+}
+
+.card p {
+  color: var(--gray, #6c7a8a);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* =========================
+   CALL TO ACTION
+========================= */
+.call-to-action {
+  margin-top: 40px;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: var(--radius);
+  padding: 34px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.call-to-action h2 {
+  margin-bottom: 10px;
+}
+
+.call-to-action .section-desc {
+  max-width: 700px;
+  margin: 10px auto 20px auto;
+}
+
+.call-to-action .btn {
+  margin: 8px;
+}
+
+/* =========================
+   SCROLL REVEAL
+========================= */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+[data-reveal].revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card[data-reveal] {
+  transition-delay: var(--delay, 0s);
+}
+
+.btn.big {
+  padding: 14px 26px;
+  font-size: 1.1rem;
+  border-radius: 10px;
+}
+
+.whatsapp-fixed {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+
+  width: 60px;
+  height: 60px;
+
+  background: #25d366;
+  color: white;
+
+  border-radius: 50%;
+  font-size: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  text-decoration: none;
+  z-index: 9999;
+
+  transition: 0.25s ease;
+}
+
+.whatsapp-fixed:hover {
+  background: #1ebe5d;
+  transform: scale(1.08);
+}
+
+.whatsapp-fixed {
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 18px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
