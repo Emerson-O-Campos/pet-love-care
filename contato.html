@@ -11,9 +11,10 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/contato.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
@@ -45,7 +46,7 @@
           <li><a class="nav-link" href="index.html">Home</a></li>
           <li><a class="nav-link" href="servicos.html">Serviços</a></li>
           <li><a class="nav-link" href="agendar.html">Agendar</a></li>
-          <li><a class="nav-link" href="contato.html">Contato</a></li>
+          <li><a class="nav-link active" href="contato.html">Contato</a></li>
         </ul>
       </nav>
     </div>
@@ -54,7 +55,6 @@
   <!-- HERO -->
   <section class="contact-hero">
     <div class="container">
-
       <h2 data-reveal>
         Vamos cuidar do seu <span>pet juntos?</span>
       </h2>
@@ -67,66 +67,74 @@
         target="_blank"
         rel="noopener noreferrer"
         href="https://wa.me/5519987155840?text=Olá!%20Quero%20atendimento%20da%20Pet%20Love%20Care">
-        💬 Falar no WhatsApp
+        <i class="fab fa-whatsapp"></i> Falar no WhatsApp
       </a>
 
-      <p class="micro" data-reveal>Resposta rápida durante o dia</p>
-
+      <p class="micro" data-reveal>💬 Resposta rápida durante o dia</p>
     </div>
   </section>
 
-  <!-- CONTEÚDO -->
+  <!-- CONTEÚDO PRINCIPAL -->
   <section class="contact-section">
     <div class="container">
-
       <div class="contact-grid">
 
-        <!-- INFOS -->
+        <!-- Card Localização -->
         <div class="contact-card" data-reveal>
+          <i class="fas fa-map-marker-alt"></i>
           <h3>📍 Localização</h3>
           <p>Indaiatuba - SP (Mato Dentro)</p>
+          <small style="color: #888;">Atendemos em todo o bairro e região</small>
         </div>
 
+        <!-- Card E-mail -->
         <div class="contact-card" data-reveal>
+          <i class="fas fa-envelope"></i>
           <h3>📧 E-mail</h3>
           <p>petlovecare10@gmail.com</p>
+          <a href="mailto:petlovecare10@gmail.com" style="color: #ff7a00; font-size: 0.85rem; text-decoration: none;">
+            Enviar mensagem →
+          </a>
         </div>
 
+        <!-- Card Instagram -->
         <div class="contact-card" data-reveal>
+          <i class="fab fa-instagram"></i>
           <h3>📷 Instagram</h3>
           <p>@petlovecare</p>
+          <a href="#" target="_blank" style="color: #ff7a00; font-size: 0.85rem; text-decoration: none;">
+            Siga-nos →
+          </a>
         </div>
 
+        <!-- Card Agendamento (Destaque) -->
         <div class="contact-card highlight" data-reveal>
+          <i class="fas fa-calendar-check"></i>
           <h3>📅 Agendamento</h3>
           <p>Agende seu serviço com praticidade.</p>
-
-          <a class="btn primary" href="agendar.html">
-            Ir para agendamento
+          <a class="btn" href="agendar.html">
+            Ir para agendamento →
           </a>
         </div>
 
       </div>
-
     </div>
   </section>
 
   <!-- MAPA -->
   <section class="map-section">
     <div class="container" data-reveal>
-
       <h2>📍 Onde atendemos</h2>
-
       <p class="section-desc">
-        Atendemos em Indaiatuba e região.
+        Atendemos em Indaiatuba e região com muito amor e dedicação.
       </p>
 
       <iframe
         class="map-frame"
         src="https://www.google.com/maps?q=Indaiatuba,+SP&output=embed"
-        loading="lazy">
+        loading="lazy"
+        title="Mapa de localização da Pet Love Care">
       </iframe>
-
     </div>
   </section>
 
@@ -141,7 +149,7 @@
   <a class="whatsapp-fixed" target="_blank" rel="noopener noreferrer"
     href="https://wa.me/5519987155840?text=Olá!%20Tenho%20interesse%20nos%20serviços%20da%20Pet%20Love%20Care.%20Pode%20me%20ajudar?"
     aria-label="Falar no WhatsApp">
-    <i class="fa-brands fa-whatsapp"></i>
+    <i class="fab fa-whatsapp"></i>
   </a>
 
   <!-- SCRIPTS -->
