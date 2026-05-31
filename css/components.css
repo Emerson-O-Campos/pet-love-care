@@ -252,3 +252,229 @@
     box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
   }
 }
+
+/* =========================
+   SERVIÇOS - LAYOUT PROFISSIONAL ALINHADO
+   ========================= */
+.services-cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+
+/* Para telas muito largas (acima de 1600px) */
+@media (min-width: 1600px) {
+  .services-cards {
+    grid-template-columns: repeat(4, minmax(320px, 380px));
+    justify-content: center;
+  }
+}
+
+.services-cards .card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 580px;
+  padding: 1.8rem;
+  border-radius: 24px;
+  background: white;
+  transition: all 0.25s ease;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.services-cards .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+  border-color: rgba(255, 122, 0, 0.2);
+}
+
+/* Título do card - todos com mesma altura */
+.services-cards .card h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid #ff7a00;
+  display: inline-block;
+  align-self: flex-start;
+  min-height: 70px;
+  line-height: 1.3;
+}
+
+/* Imagem - todas com mesma altura */
+.services-cards .service-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin: 0.8rem 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Descrição - todas com mesma altura mínima */
+.services-cards .card p {
+  margin-bottom: 0.6rem;
+  line-height: 1.5;
+  font-size: 0.95rem;
+  color: #4a5a6a;
+}
+
+/* Primeiro parágrafo (descrição principal) - altura fixa */
+.services-cards .card p:first-of-type {
+  min-height: 72px;
+  margin-bottom: 0.8rem;
+}
+
+/* Detalhes do serviço */
+.services-cards .card p strong {
+  color: #ff7a00;
+  font-weight: 600;
+}
+
+/* Container de informações para manter alinhamento */
+.service-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Preço em destaque - todos no mesmo lugar */
+.service-price-text {
+  margin-top: 0.8rem;
+  margin-bottom: 1.2rem !important;
+  font-size: 1.1rem !important;
+  background: rgba(255, 122, 0, 0.08);
+  padding: 8px 12px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.service-price-text strong {
+  color: #ff7a00;
+  font-size: 1.1rem;
+}
+
+/* Botão - todos com mesma largura e posição */
+.btn-service-custom {
+  margin-top: auto;
+  text-align: center;
+  display: block;
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 40px;
+  background: linear-gradient(135deg, #ff7a00, #ff9a3a);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-decoration: none;
+}
+
+.btn-service-custom:hover {
+  transform: scale(1.02);
+  background: linear-gradient(135deg, #e56a00, #ff8a1a);
+  box-shadow: 0 4px 12px rgba(255, 122, 0, 0.3);
+}
+
+/* =========================
+   RESPONSIVO SERVIÇOS
+   ========================= */
+@media (max-width: 1400px) {
+  .services-cards {
+    gap: 1.5rem;
+  }
+  
+  .services-cards .card {
+    min-height: 550px;
+    padding: 1.5rem;
+  }
+  
+  .services-cards .card h3 {
+    font-size: 1.3rem;
+    min-height: 65px;
+  }
+  
+  .services-cards .card p:first-of-type {
+    min-height: 66px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .services-cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.8rem;
+  }
+  
+  .services-cards .card {
+    min-height: auto;
+    padding: 1.5rem;
+  }
+  
+  .services-cards .card h3 {
+    font-size: 1.3rem;
+    min-height: auto;
+  }
+  
+  .services-cards .card p:first-of-type {
+    min-height: auto;
+  }
+  
+  .services-cards .service-img {
+    height: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-cards {
+    gap: 1.5rem;
+  }
+  
+  .services-cards .card {
+    padding: 1.2rem;
+  }
+  
+  .services-cards .card h3 {
+    font-size: 1.2rem;
+  }
+  
+  .services-cards .service-img {
+    height: 180px;
+  }
+  
+  .service-price-text {
+    font-size: 1rem !important;
+    padding: 6px 10px;
+  }
+  
+  .btn-service-custom {
+    padding: 10px 14px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .services-cards {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .services-cards .service-img {
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-cards .card h3 {
+    font-size: 1.2rem;
+  }
+  
+  .services-cards .card p {
+    font-size: 0.85rem;
+  }
+}
