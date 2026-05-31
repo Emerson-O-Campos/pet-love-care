@@ -271,3 +271,47 @@
     text-align: center;
   }
 }
+
+/* =========================
+   OTIMIZAÇÃO ESPECÍFICA DOS CARDS NO MOBILE
+   ========================= */
+@media (max-width: 768px) {
+  /* Remove qualquer efeito de hover nos cards (principal causa de travamento) */
+  .card {
+    transition: none !important;
+    transform: translateZ(0) !important;
+    backface-visibility: hidden !important;
+    will-change: auto !important;
+  }
+  
+  /* Remove delay em cascata dos cards no mobile */
+  .card[data-reveal] {
+    transition-delay: 0s !important;
+    animation-delay: 0s !important;
+  }
+  
+  /* Simplifica a animação de entrada dos cards */
+  .card.revealed {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+  
+  /* Remove sombras animadas nos cards */
+  .card:hover {
+    transform: none !important;
+    box-shadow: var(--shadow) !important;
+  }
+}
+
+/* Para telas muito pequenas, força 1 coluna sem transição */
+@media (max-width: 600px) {
+  .cards {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+  
+  .card {
+    margin: 0 !important;
+    padding: 1.2rem !important;
+  }
+}
