@@ -62,7 +62,7 @@
 }
 
 /* =========================
-   CARDS MELHORADOS
+   CARDS OTIMIZADOS (SEM TRAVAMENTO)
 ========================= */
 .cards {
   display: grid;
@@ -77,12 +77,16 @@
   padding: 2rem 1.8rem;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
   border: 1px solid rgba(255, 122, 0, 0.1);
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
   position: relative;
   overflow: hidden;
+  
+  /* OTIMIZAÇÕES DE PERFORMANCE */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform;
 }
 
+/* Efeito da borda superior (sem "all" - apenas transform) */
 .card::before {
   content: '';
   position: absolute;
@@ -92,17 +96,40 @@
   height: 4px;
   background: linear-gradient(90deg, var(--primary, #ff7a00), var(--primary-light, #ff9a3a));
   transform: scaleX(0);
-  transition: transform 0.4s ease;
+  transition: transform 0.3s ease;
   transform-origin: left;
 }
 
-.card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1);
+/* Hover apenas em desktop (e sem backdrop-filter) */
+@media (min-width: 1024px) {
+  .card {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card:hover::before {
+    transform: scaleX(1);
+  }
 }
 
-.card:hover::before {
-  transform: scaleX(1);
+/* NO MOBILE: remove hover e transições pesadas */
+@media (max-width: 768px) {
+  .card {
+    transition: none !important;
+    transform: none !important;
+  }
+  
+  .card:hover {
+    transform: none !important;
+  }
+  
+  .card::before {
+    transition: none !important;
+  }
 }
 
 .card h3 {
@@ -145,12 +172,12 @@
 }
 
 /* =========================
-   SCROLL REVEAL
+   SCROLL REVEAL OTIMIZADO
 ========================= */
 [data-reveal] {
   opacity: 0;
   transform: translateY(18px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 [data-reveal].revealed {
@@ -162,44 +189,56 @@
   transition-delay: var(--delay, 0s);
 }
 
+/* No mobile, remove delay e simplifica transição */
+@media (max-width: 768px) {
+  [data-reveal] {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  .card[data-reveal] {
+    transition-delay: 0s !important;
+  }
+}
+
 .btn.big {
   padding: 14px 26px;
   font-size: 1.1rem;
   border-radius: 10px;
 }
 
+/* =========================
+   WHATSAPP FIXO OTIMIZADO
+========================= */
 .whatsapp-fixed {
   position: fixed;
   bottom: 20px;
   right: 20px;
-
   width: 60px;
   height: 60px;
-
   background: #25d366;
   color: white;
-
   border-radius: 50%;
   font-size: 34px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
   text-decoration: none;
   z-index: 9999;
-
-  transition: 0.25s ease;
+  transition: transform 0.2s ease;
+  transform: translateZ(0);
 }
 
 .whatsapp-fixed:hover {
   background: #1ebe5d;
-  transform: scale(1.08);
+  transform: scale(1.05);
 }
 
-.whatsapp-fixed {
-  animation: pulse 1.5s infinite;
+/* Animação de pulse apenas em desktop (evita repaints no mobile) */
+@media (min-width: 768px) {
+  .whatsapp-fixed {
+    animation: pulse 1.5s infinite;
+  }
 }
 
 @keyframes pulse {
