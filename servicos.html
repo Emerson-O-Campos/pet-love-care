@@ -9,11 +9,9 @@
   <meta name="description"
     content="Conheça os serviços da Pet Love Care: passeio, visita domiciliar, hospedagem e atualizações para o tutor. Cuidado com carinho e segurança." />
 
-  <!-- Fonte moderna -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-  <!-- Poppins + Chewy -->
   <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="css/style.css" />
@@ -24,13 +22,6 @@
 <script defer src="js/menu-mobile.js"></script>
 
 <body>
-
-  <div vw class="enabled">
-    <div vw-access-button class="active"></div>
-    <div vw-plugin-wrapper>
-      <div class="vw-plugin-top-wrapper"></div>
-    </div>
-  </div>
 
   <header>
     <div class="container">
@@ -63,82 +54,66 @@
 
       <div class="page-title" data-reveal style="text-align: center;">
         <h2>Nossos <span style="color: #ff7a00;">Serviços</span> e <span style="color: #ff7a00;">Valores</span> 🐾</h2>
-        <p class="section-desc" style="text-align: center; margin-left: auto; margin-right: auto;">
+        <p class="section-desc" style="text-align: center; max-width: 700px; margin-left: auto; margin-right: auto;">
           Confira abaixo os serviços disponíveis para cuidar do seu pet com amor,
           atenção e segurança.
         </p>
       </div>
 
-      <div class="cards">
+      <div class="cards services-cards">
 
+        <!-- Card 1 - Passeio -->
         <div class="card" data-reveal>
           <h3>🚶 Passeio com Pets</h3>
           <img src="img/passeio-com-pets.jpg" alt="Passeio com pets" class="service-img">
-          <p>
-            Passeios seguros e supervisionados para seu pet gastar energia,
-            manter a saúde em dia e melhorar o bem-estar.
-          </p>
-          <p><strong>Duração:</strong> 60 minutos</p>
-          <p><strong>Ideal para:</strong> cães de todas as idades</p>
-          <p><strong>Valores:</strong> R$60,00</p>
-          
-          <br>
-          <a class="btn primary" href="agendar.html">Agendar Passeio</a>
+          <p>Passeios seguros e supervisionados para seu pet gastar energia, manter a saúde em dia e melhorar o bem-estar.</p>
+          <p><strong>⏱ Duração:</strong> 60 minutos</p>
+          <p><strong>🐕 Ideal para:</strong> cães de todas as idades</p>
+          <p class="service-price-text"><strong>💰 Valor:</strong> R$60,00</p>
+          <a class="btn-service-custom" href="agendar.html">📅 Agendar Passeio</a>
         </div>
 
+        <!-- Card 2 - Visita -->
         <div class="card" data-reveal>
           <h3>🏡 Visita em Domicílio</h3>
           <img src="img/visita-em-domicilio.jpg" alt="Visita em domicílio" class="service-img">
-          <p>
-            Atendimento na casa do tutor com alimentação, troca de água,
-            limpeza do ambiente e interação com o pet.
-          </p>
-          <p><strong>Inclui:</strong> cuidados básicos e brincadeiras</p>
-          <p><strong>Ideal para:</strong> gatos e cães</p>
-          <p><strong>Valores:</strong> R$80,00</p>
-
-          <br>
-          <a class="btn primary" href="agendar.html">Agendar Visita</a>
+          <p>Atendimento na casa do tutor com alimentação, troca de água, limpeza do ambiente e interação com o pet.</p>
+          <p><strong>📋 Inclui:</strong> cuidados básicos e brincadeiras</p>
+          <p><strong>🐕🐱 Ideal para:</strong> gatos e cães</p>
+          <p class="service-price-text"><strong>💰 Valor:</strong> R$80,00</p>
+          <a class="btn-service-custom" href="agendar.html">📅 Agendar Visita</a>
         </div>
 
+        <!-- Card 3 - Hospedagem (ajustado para ficar igual aos outros) -->
         <div class="card" data-reveal>
           <h3>🐾 Hospedagem</h3>
           <img src="img/hospedagem.jpeg" alt="Hospedagem para pets" class="service-img">
-          <p>
-            Caso você precise viajar, seu pet pode ficar hospedado com acompanhamento,
-            alimentação e supervisão.
-          </p>
-          <p><strong>Importante:</strong> serviço sujeito à disponibilidade.</p>
-          <p><strong>Valores:</strong> R$80,00 por dia</p>
-
-          <br>
-          <a class="btn primary" href="agendar.html">Solicitar Hospedagem</a>
+          <p>Caso você precise viajar, seu pet pode ficar hospedado com acompanhamento, alimentação e supervisão.</p>
+          <p><strong>⚠ Importante:</strong> serviço sujeito à disponibilidade</p>
+          <p><strong>🏠 Inclui:</strong> acomodação + alimentação</p>
+          <p class="service-price-text"><strong>💰 Valor:</strong> R$80,00/dia</p>
+          <a class="btn-service-custom" href="agendar.html">📅 Solicitar Hospedagem</a>
         </div>
 
+        <!-- Card 4 - Atualizações -->
         <div class="card" data-reveal>
-          <h3>📸 Atualizações para o Tutor</h3>
+          <h3>📸 Atualizações</h3>
           <img src="img/atualizacao-para-tutor.jpg" alt="Atualizações para o tutor" class="service-img">
-          <p>
-            Durante o atendimento, enviamos fotos e mensagens para que o tutor fique
-            tranquilo e acompanhe tudo.
-          </p>
-          <p><strong>Inclui:</strong> fotos e mensagens no WhatsApp</p>
-          <p><strong>Disponível em:</strong> todos os serviços</p>
-
-          <br>
-          <a class="btn primary" href="agendar.html">Agendar Serviço</a>
+          <p>Durante o atendimento, enviamos fotos e mensagens para que o tutor fique tranquilo e acompanhe tudo.</p>
+          <p><strong>📱 Inclui:</strong> fotos e mensagens no WhatsApp</p>
+          <p><strong>✅ Disponível em:</strong> todos os serviços</p>
+          <p class="service-price-text"><strong>🎁 Grátis</strong> em todos os serviços</p>
+          <a class="btn-service-custom" href="agendar.html">📅 Agendar Serviço</a>
         </div>
 
       </div>
 
-      <br><br>
-
+      <!-- CTA original -->
       <div class="call-to-action" data-reveal>
         <h2>Pronto para cuidar do seu pet?</h2>
         <p class="section-desc">
           Agende agora mesmo e garanta um atendimento seguro e cheio de carinho.
         </p>
-
         <a class="btn primary" href="agendar.html">📅 Agendar um Serviço</a>
         <a class="btn outline" href="contato.html">📩 Tirar Dúvidas</a>
       </div>
